@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+
+2	+
+3	+
+int main() {
+4	+
+    int arr[100], n, num, pos;
+5	+
+6	+
+    printf("Enter the number of elements in the list: ");
+7	+
+    scanf("%d", &n);
+8	+
+9	+
+    printf("Enter %d elements:\n", n);
+10	+
+    for (int i = 0; i < n; i++) {
+11	+
+        scanf("%d", &arr[i]);
+12	+
+    }
+13	+
+    printf("Enter the number to insert: ");
+14	+
+    scanf("%d", &num);
+15	+
+    printf("Enter the position (0 to %d) to insert the number: ", n);
+16	+
+    scanf("%d", &pos);
+17	+
+    for (int i = n; i > pos; i--) {
+18	+
+        arr[i] = arr[i - 1];
+19	+
+    }
+20	+
+21	+
+    arr[pos] = num; 
+22	+
+    n++;
+23	+
+    printf("List after insertion:\n");
+24	+
+    for (int i = 0; i < n; i++) {
+25	+
+        printf("%d ", arr[i]);
+26	+
+    }
+27	+
+    printf("\n");
+28	+
+29	+
+    return 0;
+30	+
+}

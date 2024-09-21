@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+
+2	+
+int main() {
+3	+
+    int n;
+4	+
+5	+
+    printf("Enter a number: ");
+6	+
+    scanf("%d", &n);
+7	+
+8	+
+    printf("Factors of %d are:\n", n);
+9	+
+    for (int i = 1; i <= n; i++) {
+10	+
+        if (n % i == 0) {
+11	+
+            printf("%d ", i);
+12	+
+        }
+13	+
+    }
+14	+
+    printf("\n");
+15	+
+16	+
+    return 0;
+17	+
+}

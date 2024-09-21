@@ -1,0 +1,100 @@
+#include <stdio.h>
+
+
+2	+
+#include <limits.h>
+3	+
+#define V 5
+4	+
+int findMinKey(int key[], int mstSet[]) {
+5	+
+    int min = INT_MAX, min_index;
+6	+
+    for (int v = 0; v < V; v++)
+7	+
+        if (mstSet[v] == 0 && key[v] < min)
+8	+
+            min = key[v], min_index = v;
+9	+
+    
+10	+
+    return min_index;
+11	+
+}
+12	+
+void printMST(int parent[], int graph[V][V]) {
+13	+
+    printf("Edge \tWeight\n");
+14	+
+    for (int i = 1; i < V; i++)
+15	+
+        printf("%d - %d \t%d \n", parent[i], i, graph[i][parent[i]]);
+16	+
+}
+17	+
+void primMST(int graph[V][V]) {
+18	+
+    int parent[V]; // Array to store the MST
+19	+
+    int key[V];    // Key values to select the minimum weight edge
+20	+
+    int mstSet[V]; // Array to track vertices included in the MST
+21	+
+    for (int i = 0; i < V; i++) {
+22	+
+        key[i] = INT_MAX;
+23	+
+        mstSet[i] = 0;
+24	+
+    }
+25	+
+    key[0] = 0;
+26	+
+    parent[0] = -1; // Root of the MST
+27	+
+28	+
+    for (int count = 0; count < V - 1; count++) {
+29	+
+        int u = findMinKey(key, mstSet);
+30	+
+        mstSet[u] = 1; // Include the picked vertex in the MST
+31	+
+        for (int v = 0; v < V; v++)
+32	+
+            if (graph[u][v] && mstSet[v] == 0 && graph[u][v] < key[v]) {
+33	+
+                parent[v] = u;
+34	+
+                key[v] = graph[u][v];
+35	+
+            }
+36	+
+    }
+37	+
+    printMST(parent, graph);
+38	+
+}
+39	+
+40	+
+int main() {
+41	+
+    int graph[V][V] = {
+42	+
+        {0, 2, 0, 6, 0},
+43	+
+        {2, 0, 3, 8, 5},
+44	+
+        {0, 3, 0, 0, 7},
+45	+
+        {6, 8, 0, 0, 9},
+46	+
+        {0, 5, 7, 9, 0}
+47	+
+    };
+48	+
+    primMST(graph);
+49	+
+50	+
+    return 0;
+51	+
+}

@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+
+2	+
+3	+
+int main() {
+4	+
+    int rows = 4; 
+5	+
+    for (int i = 1; i <= rows; i++) {
+6	+
+        for (int j = 1; j <= (rows - i) * 2; j++) {
+7	+
+            printf(" ");
+8	+
+        }
+9	+
+        for (int j = 1; j <= i; j++) {
+10	+
+            printf("%d   ", j); 
+11	+
+        }
+12	+
+13	+
+        printf("\n");
+14	+
+    }
+15	+
+16	+
+    return 0;
+17	+
+}

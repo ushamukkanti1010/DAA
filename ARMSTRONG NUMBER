@@ -1,0 +1,33 @@
+#include <stdio.h>
+2	+
+int main() {
+3	+
+    int num,n, remainder,arm= 0;
+4	+
+    printf("Enter a number: ");
+5	+
+    scanf("%d", &n);
+6	+
+	 n= num;
+7	+
+    while (num!= 0) {
+8	+
+        remainder = n% 10;
+9	+
+        arm += remainder * remainder * remainder;
+10	+
+        num/= 10;
+11	+
+    }
+12	+
+    if (arm== n)
+13	+
+        printf("%d is an Armstrong number.\n",num);
+14	+
+    else
+15	+
+        printf("%d is not an Armstrong number.\n"),num;
+16	+
+        
+17	+
+}

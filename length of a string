@@ -1,0 +1,24 @@
+#include <stdio.h>
+2	+
+int main() {
+3	+
+    char str[100];
+4	+
+    int i = 0;
+5	+
+    printf("Enter a string: ");
+6	+
+    gets(str); // Simple input
+7	+
+    while (str[i] != '\0') {
+8	+
+        i++;
+9	+
+    } 
+10	+
+    printf("Length of the string: %d\n", i);
+11	+
+12	+
+    return 0;
+13	+
+}

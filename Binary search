@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+
+2	+
+int main() {
+3	+
+    int arr[100], n, search, low, high, mid;
+4	+
+    printf("Enter number of elements: ");
+5	+
+    scanf("%d", &n);
+6	+
+7	+
+    printf("Enter sorted elements: ");
+8	+
+    for (int i = 0; i < n; i++) {
+9	+
+        scanf("%d", &arr[i]);
+10	+
+    }
+11	+
+    printf("Enter number to search: ");
+12	+
+    scanf("%d", &search);
+13	+
+    low = 0;
+14	+
+    high = n - 1;
+15	+
+    while (low <= high) {
+16	+
+        mid = (low + high) / 2;
+17	+
+18	+
+        if (arr[mid] == search) {
+19	+
+            printf("Found at position %d\n", mid + 1);
+20	+
+            return 0;
+21	+
+        } else if (arr[mid] < search) {
+22	+
+            low = mid + 1;
+23	+
+        } else {
+24	+
+            high = mid - 1;
+25	+
+        }
+26	+
+    }
+27	+
+28	+
+    printf("Not found\n");
+29	+
+    return 0;
+30	+
+}

@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+
+2	+
+int main() {
+3	+
+    int n, max;
+4	+
+5	+
+    printf("Enter number of elements: ");
+6	+
+    scanf("%d", &n);
+7	+
+8	+
+    int arr[n];
+9	+
+10	+
+    printf("Enter elements: ");
+11	+
+    for (int i = 0; i < n; i++) {
+12	+
+        scanf("%d", &arr[i]);
+13	+
+    }
+14	+
+15	+
+    max = arr[0];
+16	+
+    for (int i = 1; i < n; i++) {
+17	+
+        if (arr[i] > max) {
+18	+
+            max = arr[i];
+19	+
+        }
+20	+
+    }
+21	+
+22	+
+    printf("Largest element: %d\n", max);
+23	+
+24	+
+    return 0;
+25	+
+}
+26	+

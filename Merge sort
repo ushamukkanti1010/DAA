@@ -1,0 +1,131 @@
+#include <stdio.h>
+
+
+2	+
+3	+
+int main() {
+4	+
+    int arr[100], n;
+5	+
+6	+
+    printf("Enter number of elements: ");
+7	+
+    scanf("%d", &n);
+8	+
+9	+
+    printf("Enter elements:\n");
+10	+
+    for (int i = 0; i < n; i++) {
+11	+
+        scanf("%d", &arr[i]);
+12	+
+    }
+13	+
+14	+
+    mergeSort(arr, 0, n - 1);
+15	+
+16	+
+    printf("Sorted array:\n");
+17	+
+    for (int i = 0; i < n; i++) {
+18	+
+        printf("%d ", arr[i]);
+19	+
+    }
+20	+
+    printf("\n");
+21	+
+22	+
+    return 0;
+23	+
+}
+24	+
+25	+
+void merge(int arr[], int left, int mid, int right) {
+26	+
+    int i, j, k;
+27	+
+    int n1 = mid - left + 1;
+28	+
+    int n2 = right - mid;
+29	+
+30	+
+    int L[n1], R[n2];
+31	+
+32	+
+    for (i = 0; i < n1; i++)
+33	+
+        L[i] = arr[left + i];
+34	+
+    for (j = 0; j < n2; j++)
+35	+
+        R[j] = arr[mid + 1 + j];
+36	+
+37	+
+    i = 0; 
+38	+
+    j = 0; 
+39	+
+    k = left; 
+40	+
+    while (i < n1 && j < n2) {
+41	+
+        if (L[i] <= R[j]) {
+42	+
+            arr[k] = L[i];
+43	+
+            i++;
+44	+
+        } else {
+45	+
+            arr[k] = R[j];
+46	+
+            j++;
+47	+
+        }
+48	+
+        k++;
+49	+
+    }
+50	+
+51	+
+    while (i < n1) {
+52	+
+        arr[k] = L[i];
+53	+
+        i++;
+54	+
+        k++;
+55	+
+    }
+56	+
+57	+
+    while (j < n2) {
+58	+
+        arr[k] = R[j];
+59	+
+        j++;
+60	+
+        k++;
+61	+
+    }
+62	+
+}
+63	+
+64	+
+void mergeSort(int arr[], int left, int right) {
+65	+
+    if (left < right) {
+66	+
+        int mid = left + (right - left) / 2;
+67	+
+68	+
+        mergeSort(arr, left, mid);
+69	+
+        mergeSort(arr, mid + 1, right);
+70	+
+        merge(arr, left, mid, right);
+71	+
+    }
+72	+
+}

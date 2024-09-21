@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+
+2	+
+3	+
+int main() {
+4	+
+    int num, sum = 0;
+5	+
+6	+
+    printf("Enter a number: ");
+7	+
+    scanf("%d", &num);
+8	+
+9	+
+    for (int i = 1; i < num; i++) {
+10	+
+        if (num % i == 0) {
+11	+
+            sum += i; 
+12	+
+        }
+13	+
+    }
+14	+
+15	+
+    if (sum == num) {
+16	+
+        printf("%d is a perfect number.\n", num);
+17	+
+    } else {
+18	+
+        printf("%d is not a perfect number.\n", num);
+19	+
+    }
+20	+
+21	+
+    return 0;
+22	+
+}

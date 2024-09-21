@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+
+2	+
+3	+
+int main() {
+4	+
+    int n, a = 0, b = 1, next;
+5	+
+6	+
+    printf("Enter number of terms: ");
+7	+
+    scanf("%d", &n);
+8	+
+9	+
+    printf("%d %d ", a, b);
+10	+
+    for (int i = 2; i < n; i++) {
+11	+
+        next = a + b;
+12	+
+        printf("%d ", next);
+13	+
+        a = b;
+14	+
+        b = next;
+15	+
+    }
+16	+
+17	+
+    return 0;
+18	+
+}

@@ -1,0 +1,144 @@
+#include <stdio.h>
+
+
+2	+
+#include <limits.h>
+3	+
+4	+
+// Define the number of agents/tasks
+5	+
+#define N 4
+6	+
+7	+
+// Function to find the minimum value in a row
+8	+
+int findMinInRow(int costMatrix[N][N], int row, int assigned[N]) {
+9	+
+    int min = INT_MAX;
+10	+
+    for (int j = 0; j < N; j++) {
+11	+
+        if (!assigned[j] && costMatrix[row][j] < min)
+12	+
+            min = costMatrix[row][j];
+13	+
+    }
+14	+
+    return min;
+15	+
+}
+16	+
+17	+
+// Function to find the minimum value in a column
+18	+
+int findMinInCol(int costMatrix[N][N], int col, int assigned[N]) {
+19	+
+    int min = INT_MAX;
+20	+
+    for (int i = 0; i < N; i++) {
+21	+
+        if (!assigned[i] && costMatrix[i][col] < min)
+22	+
+            min = costMatrix[i][col];
+23	+
+    }
+24	+
+    return min;
+25	+
+}
+26	+
+27	+
+// Calculate lower bound
+28	+
+int calculateBound(int costMatrix[N][N], int assigned[N]) {
+29	+
+    int bound = 0;
+30	+
+    for (int i = 0; i < N; i++) {
+31	+
+        if (!assigned[i]) {
+32	+
+            bound += findMinInRow(costMatrix, i, assigned);
+33	+
+        }
+34	+
+    }
+35	+
+    return bound;
+36	+
+}
+37	+
+38	+
+// Branch and Bound function to find the minimum cost assignment
+39	+
+void solveAssignmentProblem(int costMatrix[N][N], int assigned[N], int currentAgent, int currentCost, int *minCost) {
+40	+
+    if (currentAgent == N) {
+41	+
+        if (currentCost < *minCost) {
+42	+
+            *minCost = currentCost;
+43	+
+        }
+44	+
+        return;
+45	+
+    }
+46	+
+47	+
+    for (int i = 0; i < N; i++) {
+48	+
+        if (!assigned[i]) {
+49	+
+            assigned[i] = 1;  // Mark task i as assigned
+50	+
+            int tempCost = currentCost + costMatrix[currentAgent][i];
+51	+
+52	+
+            if (tempCost + calculateBound(costMatrix, assigned) < *minCost) {
+53	+
+                solveAssignmentProblem(costMatrix, assigned, currentAgent + 1, tempCost, minCost);
+54	+
+            }
+55	+
+56	+
+            assigned[i] = 0;  // Unmark task i for backtracking
+57	+
+        }
+58	+
+    }
+59	+
+}
+60	+
+61	+
+int main() {
+62	+
+    // Example cost matrix
+63	+
+    int costMatrix[N][N] = {
+64	+
+        {9, 2, 7, 8},
+65	+
+        {6, 4, 3, 7},
+66	+
+        {5, 8, 1, 8},
+67	+
+        {7, 6, 9, 4}
+68	+
+    };
+69	+
+70	+
+    int assigned[N] = {0};  // Keeps track of assigned tasks
+71	+
+    int minCost = INT_MAX;   // Minimum cost initialized to a large value
+72	+
+73	+
+    solveAssignmentProblem(costMatrix, assigned, 0, 0, &minCost);
+74	+
+75	+
+    printf("The minimum cost of assignment is: %d\n", minCost);
+76	+
+77	+
+    return 0;
+78	+
+}

@@ -1,0 +1,57 @@
+def optimal_bst(keys, freq):
+
+
+2	+
+    n = len(keys)
+3	+
+    cost = [[0] * n for _ in range(n)]
+4	+
+    sum_freq = [[0] * n for _ in range(n)]
+5	+
+6	+
+    # Initialize frequency sum
+7	+
+    for i in range(n):
+8	+
+        sum_freq[i][i] = freq[i]
+9	+
+        for j in range(i + 1, n):
+10	+
+            sum_freq[i][j] = sum_freq[i][j - 1] + freq[j]
+11	+
+12	+
+    # Fill the cost table
+13	+
+    for length in range(1, n + 1):  # length of the chain
+14	+
+        for i in range(n - length + 1):
+15	+
+            j = i + length - 1
+16	+
+            cost[i][j] = float('inf')
+17	+
+            for r in range(i, j + 1):
+18	+
+                left_cost = cost[i][r - 1] if r > i else 0
+19	+
+                right_cost = cost[r + 1][j] if r < j else 0
+20	+
+                total_cost = left_cost + right_cost + sum_freq[i][j]
+21	+
+                if total_cost < cost[i][j]:
+22	+
+                    cost[i][j] = total_cost
+23	+
+24	+
+    return cost[0][n - 1]
+25	+
+26	+
+# Example usage
+27	+
+keys = [10, 12, 20]
+28	+
+freq = [34, 8, 50]
+29	+
+min_cost = optimal_bst(keys, freq)
+30	+
+print("Minimum cost of Optimal BST:", min_cost)

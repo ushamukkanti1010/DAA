@@ -1,0 +1,26 @@
+#include <stdio.h>
+2	+
+3	+
+int main() {
+4	+
+    int n, fact = 1;
+5	+
+6	+
+    printf("Enter a number: ");
+7	+
+    scanf("%d", &n);
+8	+
+9	+
+    for (int i = 1; i <= n; i++) {
+10	+
+        fact *= i;
+11	+
+    }
+12	+
+13	+
+    printf("Factorial of %d is: %d\n", n, fact);
+14	+
+15	+
+    return 0;
+16	+
+}
